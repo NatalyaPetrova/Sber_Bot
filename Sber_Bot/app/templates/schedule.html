@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оптимальное расписание</title>
+</head>
+<body>
+    <h1>Оптимальное расписание сотрудников</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Уровень навыков</th>
+                <th>Опыт (лет)</th>
+                <th>Доступные часы</th>
+                <th>Назначенные часы</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in schedule %}
+                <tr>
+                    <td>{{ entry.name }}</td>
+                    <td>{{ entry.skill_level }}</td>
+                    <td>{{ entry.experience }}</td>
+                    <td>{{ entry.availability }}</td>
+                    <td><strong>{{ entry.assigned_hours }}</strong></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/">Вернуться на главную</a>
+</body>
+</html>

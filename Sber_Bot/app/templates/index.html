@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бот для расписания сотрудников</title>
+</head>
+<body>
+    <h1>Бот для расписания сотрудников</h1>
+
+    <h2>Добавить сотрудника</h2>
+    <form method="POST" action="/add_employee">
+        <input type="text" name="name" placeholder="Имя" required>
+        <input type="text" name="skill_level" placeholder="Уровень навыков" required>
+        <input type="number" name="experience" placeholder="Опыт (лет)" required>
+        <input type="text" name="availability" placeholder="Доступность (например, 40 часов/неделя)" required>
+        <button type="submit">Добавить сотрудника</button>
+    </form>
+
+    <h2>Сотрудники</h2>
+    <ul>
+        {% for employee in employees %}
+            <li>
+                {{ employee.name }} - {{ employee.skill_level }} - {{ employee.experience }} лет
+                (<strong>Доступность:</strong> {{ employee.availability }})
+                <a href="/edit_preferences/{{ employee.id }}">Указать предпочтения</a>
+                <a href="/edit_employee/{{ employee.id }}">Редактировать</a>
+                <form action="/delete_employee/{{ employee.id }}" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Вы уверены, что хотите удалить {{ employee.name }}?');">
+                        Удалить
+                    </button>
+                </form>
+
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Предпочтения сотрудников</h2>
+    <form action="/submit_preferences" method="post">
+        <label for="employee_id">Выберите сотрудника:</label>
+        <select id="employee_id" name="employee_id">
+            {% for employee in employees %}
+                <option value="{{ employee.id }}">{{ employee.name }}</option>
+            {% endfor %}
+        </select>
+        <textarea name="preferences" placeholder="Введите ваши предпочтения..." required></textarea>
+        <button type="submit">Отправить предпочтения</button>
+    </form>
+
+    <h2>Просмотр предпочтений сотрудников</h2>
+    <a href="/show_preferences">Показать предпочтения сотрудников</a>
+
+    <h2>Генерация расписания</h2>
+    <a href="/generate_schedule">Сгенерировать расписание</a>
+</body>
+</html>

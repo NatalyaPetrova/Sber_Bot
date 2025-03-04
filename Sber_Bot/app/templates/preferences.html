@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Предпочтения сотрудников</title>
+</head>
+<body>
+    <h1>Предпочтения сотрудников</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Имя сотрудника</th>
+                <th>Предпочтения</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee_id, data in preferences.items() %}
+                <tr>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.preferences }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/">Вернуться на главную</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование сотрудника</title>
+</head>
+<body>
+    <h1>Редактирование данных сотрудника</h1>
+
+    <form method="POST">
+        <label>Имя:</label>
+        <input type="text" name="name" value="{{ employee.name }}" required>
+
+        <label>Уровень навыков:</label>
+        <input type="number" name="skill_level" step="0.1" value="{{ employee.skill_level }}" required>
+
+        <label>Опыт (лет):</label>
+        <input type="number" name="experience" value="{{ employee.experience }}" required>
+
+        <label>Доступность (например, 40 часов/неделя):</label>
+        <input type="text" name="availability" value="{{ employee.availability }}" required>
+
+        <button type="submit">Сохранить изменения</button>
+    </form>
+
+    <a href="/">Вернуться на главную</a>
+</body>
+</html>

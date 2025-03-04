@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование предпочтений</title>
+</head>
+<body>
+    <h1>Редактирование предпочтений для {{ employee.name }}</h1>
+
+    <form action="/submit_preferences" method="post">
+        <input type="hidden" name="employee_id" value="{{ employee.id }}">
+        <textarea name="preferences" placeholder="Введите ваши предпочтения..." required></textarea>
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <a href="/">Вернуться назад</a>
+</body>
+</html>
